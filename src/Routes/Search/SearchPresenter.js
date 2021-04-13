@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
+import Poster from "Components/Poster";
+
 const Container = styled.div`
   padding: 0px 20px;
 `;
@@ -43,14 +45,32 @@ const SearchPresenter = ({
         {movieResults && movieResults.length > 0 && (
           <Section title="Movie Results">
             {movieResults.map((movie) => (
-              <span key={movie.id}>{movie.title}</span>
+              <Poster
+                key={movie.id}
+                id={movie.id}
+                title={movie.original_title}
+                imageUrl={movie.poster_path}
+                rating={movie.vote_average}
+                year={movie.release_date && movie.release_date.substring(0, 4)} //2018-MM-DD  2018년만 가져가게 섭스트링.
+                isMovie={true} //위에는 만약 10000만넘어가면 4자리수가 넘어가니까 그냥 모든 날짜 데이터 출력 &&는 삼항연산자와 같은기능
+              />
             ))}
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
           <Section title="TV Show Results">
             {tvResults.map((show) => (
-              <span key={show.id}>{show.name}</span>
+              <Poster
+                key={show.id}
+                id={show.id}
+                title={show.original_name}
+                imageUrl={show.poster_path}
+                rating={show.vote_average}
+                year={
+                  show.first_air_date && show.first_air_date.substring(0, 4)
+                } //2018-MM-DD  2018년만 가져가게 섭스트링.
+                //위에는 만약 10000만넘어가면 4자리수가 넘어가니까 그냥 모든 날짜 데이터 출력 &&는 삼항연산자와 같은기능
+              />
             ))}
           </Section>
         )}
