@@ -24,8 +24,8 @@ const Item = styled.li`
   width: 80px;
   height: 50px;
   text-align: center;
-  border-bottom: 5px solid 
-  ${props => (props.current ? "#3498db" : "transparent")};
+  border-bottom: 5px solid
+    ${(props) => (props.current ? "#3498db" : "transparent")};
   transition: border-bottom 0.5s ease-in-out;
 `;
 
@@ -36,9 +36,15 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default withRouter(({location: {pathname}}) => (
+const Ak = styled.a`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export default withRouter(({ location: { pathname } }) => (
   <Header>
-    
     <List>
       <Item current={pathname === "/"}>
         <SLink to="/">Movies</SLink>
@@ -48,6 +54,13 @@ export default withRouter(({location: {pathname}}) => (
       </Item>
       <Item current={pathname === "/search"}>
         <SLink to="/search">Search</SLink>
+      </Item>
+      <Item>
+        <Ak>
+          <a href="https://www.themoviedb.org/" target="_blank">
+            API Movie DB
+          </a>
+        </Ak>
       </Item>
     </List>
   </Header>
