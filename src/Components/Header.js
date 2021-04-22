@@ -36,7 +36,7 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-const Ak = styled.a`
+const Ak = styled(Link)`
   height: 50px;
   display: flex;
   align-items: center;
@@ -57,9 +57,7 @@ export default withRouter(({ location: { pathname } }) => (
       </Item>
       <Item>
         <Ak>
-          <a href="https://www.themoviedb.org/" target="_blank">
-            API Movie DB
-          </a>
+          <Link to="/https://www.themoviedb.org/">movie db</Link>
         </Ak>
       </Item>
     </List>

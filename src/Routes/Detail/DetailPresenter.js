@@ -43,7 +43,7 @@ const Cover = styled.div`
 `;
 
 const Data = styled.div`
-  width: 70;
+  width: 70%;
   margin-left: 10px;
 `;
 
@@ -70,6 +70,14 @@ const Overview = styled.p`
   width: 50%; //가로 비율 50퍼센트만 차지하게
 `;
 
+const CompaniesLogo = styled.div`
+  margin-top: 30px;
+  width: 300px;
+  background-image: url(${(props) => props.logoImage});
+  height: 300px;
+  background-repeat: no-repeat;
+`;
+
 const DetailPresenter = ({ result, loading, error }) =>
   loading ? (
     <Loader />
@@ -78,6 +86,7 @@ const DetailPresenter = ({ result, loading, error }) =>
       <Backdrop
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
       />
+
       <Content>
         <Cover
           bgImage={
@@ -86,6 +95,7 @@ const DetailPresenter = ({ result, loading, error }) =>
               : require("../../assets/noPosterSmall.png")
           }
         />
+
         <Data>
           <Title>
             {result.original_title
@@ -114,8 +124,30 @@ const DetailPresenter = ({ result, loading, error }) =>
                   `
                 )}
             </Item>
+            <Divider>•</Divider>
+            <Item>
+              {result.production_companies &&
+                result.production_companies.map((company, index) =>
+                  index === result.production_companies
+                    ? ` 제작사 : ` +
+                      company.name +
+                      ` 제작국가 : ` +
+                      company.origin_country
+                    : ` 제작사 : ${
+                        company.name + ` 제작국가 : ` + company.origin_country
+                      }`
+                )}
+            </Item>
           </ItemContainer>
+
           <Overview>{result.overview}</Overview>
+          <CompaniesLogo
+            logoImage={
+              result.production_companies[0].logo_path
+                ? `https://image.tmdb.org/t/p/w200/${result.production_companies[0].logo_path}`
+                : `널이요`
+            }
+          />
         </Data>
       </Content>
     </Container>

@@ -24,8 +24,8 @@ export const moviesApi = {
         query: encodeURIComponent(term),
       },
     }),
+  //영화 제작사 api 로고 , 이름
 };
-
 export const tvApi = {
   topRated: () => api.get("tv/top_rated"),
   popular: () => api.get("tv/popular"),
