@@ -27,3 +27,5 @@
 - [O] TV Show Detail
 - [O] Movie Detail
 - [O] Search (Movie, TV)
+
+## 배포: Netlify 주소 : https://jolly-snyder-25f8ce.netlify.app/#/
