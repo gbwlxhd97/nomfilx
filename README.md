@@ -29,3 +29,5 @@
 - [O] Search (Movie, TV)
 
 ## 배포: Netlify 주소 : https://jolly-snyder-25f8ce.netlify.app/#/
+
+pc교체후 커밋 테스트하기.
